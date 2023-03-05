@@ -11,8 +11,8 @@ fn main() -> Result<()> {
 
     let process = std::process::Command::new(command)
         .args(command_args)
-        .stdin(Stdio::piped())
-        .stderr(Stdio::piped())
+        .stdin(Stdio::inherit())
+        .stderr(Stdio::inherit())
         .spawn()
         .and_then(|mut s| s.wait())
         .with_context(|| {
