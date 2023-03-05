@@ -5,8 +5,10 @@ use anyhow::{Context, Result};
 // Usage: your_docker.sh run <image> <command> <arg1> <arg2> ...
 fn main() -> Result<()> {
     let args: Vec<_> = std::env::args().collect();
+
     let command = &args[3];
     let command_args = &args[4..];
+
     let process = std::process::Command::new(command)
         .args(command_args)
         .stdin(Stdio::piped())
